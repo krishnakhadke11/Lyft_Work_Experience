@@ -5,5 +5,5 @@ class abcBattery(ABC):
         self.last_service_date=last_service_date
         
     @abstractmethod
-    def battery_needs_service(self):
+    def needs_service(self):
         pass    
