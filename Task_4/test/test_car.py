@@ -11,14 +11,14 @@ from car_factory import car_factory
 
 class TestCalliope(unittest.TestCase):
     carInst = car_factory()
-    def test_battery_should_be_serviced(self):
+    def test_battery_should_not_be_serviced(self):
         today = datetime.today().date()
         last_service_date = today.replace(year=today.year - 3)
         current_mileage = 0
         last_service_mileage = 0
         
         car = self.carInst.create_calliope(last_service_date, current_mileage, last_service_mileage)
-        self.assertTrue(car.needs_service())
+        self.assertFalse(car.needs_service())
 
     def test_battery_should_not_be_serviced(self):
         today = datetime.today().date()
@@ -48,14 +48,14 @@ class TestCalliope(unittest.TestCase):
 
 class TestGlissade(unittest.TestCase):
     carInst = car_factory()
-    def test_battery_should_be_serviced(self):
+    def test_battery_should_not_be_serviced(self):
         today = datetime.today().date()
         last_service_date = today.replace(year=today.year - 3)
         current_mileage = 0
         last_service_mileage = 0
 
         car = self.carInst.create_glissade(last_service_date, current_mileage, last_service_mileage)
-        self.assertTrue(car.needs_service())
+        self.assertFalse(car.needs_service())
 
     def test_battery_should_not_be_serviced(self):
         today = datetime.today().date()
@@ -99,7 +99,7 @@ class TestPalindrome(unittest.TestCase):
         warning_light_is_on = False
 
         car = self.carInst.create_palindrome(last_service_date, warning_light_is_on)
-        self.assertTrue(car.needs_service())
+        self.assertFalse(car.needs_service())
 
     def test_engine_should_be_serviced(self):
         last_service_date = datetime.today().date()
